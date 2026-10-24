@@ -3,10 +3,23 @@ import { Film } from "lucide-react";
 import { IMovie } from "../contracts/IMovie";
 import { MovieCard } from "./MovieCard";
 
+/**
+ * Properties for the MovieGrid presentation component.
+ */
 interface MovieGridProperties {
+  /**
+   * List of movies to render inside the responsive grid.
+   */
   readonly movies: readonly IMovie[];
 }
 
+/**
+ * Responsive grid container displaying movie cards. Automatically scales from 1 column on mobile to 4 on widescreen.
+ * Includes a friendly empty state when no movies match filter criteria.
+ *
+ * @param properties - Component properties.
+ * @returns Rendered movie grid or empty state placeholder.
+ */
 export function MovieGrid({ movies }: MovieGridProperties) {
   if (movies.length === 0) {
     return (

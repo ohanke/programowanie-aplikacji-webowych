@@ -2,6 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { Film, Heart, Code2 } from "lucide-react";
 
+/**
+ * Site-wide application footer displaying author details, university course information, technology stack, and quick links.
+ *
+ * @returns Rendered footer element.
+ */
 export function ApplicationFooter() {
   const currentYear = new Date().getFullYear();
 

@@ -5,6 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Film, Menu, X, Clapperboard, Compass, Info } from "lucide-react";
 
+/**
+ * Top responsive application navigation bar with desktop links and a collapsible mobile drawer.
+ * Tracks the current active pathname to provide visual indicators for current view.
+ *
+ * @returns Rendered header element with responsive navigation.
+ */
 export function NavigationBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const currentPathname = usePathname();

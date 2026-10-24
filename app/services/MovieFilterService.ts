@@ -5,7 +5,18 @@ import {
 } from "../contracts/IMovieFilterCriteria";
 import { IMovieFilterService } from "../contracts/IMovieFilterService";
 
+/**
+ * Service implementation responsible for filtering, searching, and sorting collections of movies.
+ * Operates purely on immutable data structures without side effects.
+ */
 export class MovieFilterService implements IMovieFilterService {
+  /**
+   * Filters and sorts an array of movies based on search criteria, genre, and sort order.
+   *
+   * @param movies - Source collection of movies.
+   * @param criteria - Search query, selected genre, and desired sort order.
+   * @returns A filtered and sorted shallow copy of the movies array.
+   */
   public filterAndSortMovies(
     movies: readonly IMovie[],
     criteria: IMovieFilterCriteria
@@ -34,6 +45,12 @@ export class MovieFilterService implements IMovieFilterService {
     return this.sortMovies(filteredMovies, criteria.sortOrder);
   }
 
+  /**
+   * Collects, deduplicates, and sorts all unique genre names found across a movie collection.
+   *
+   * @param movies - Source collection of movies.
+   * @returns An alphabetically sorted array of unique genre strings.
+   */
   public extractUniqueGenres(movies: readonly IMovie[]): readonly string[] {
     const genresSet = new Set<string>();
 
@@ -48,6 +65,13 @@ export class MovieFilterService implements IMovieFilterService {
     );
   }
 
+  /**
+   * Sorts a movie array based on a designated sorting strategy.
+   *
+   * @param movies - Array of movies to sort.
+   * @param sortOrder - Selected sort order algorithm.
+   * @returns A sorted copy of the movies array.
+   */
   private sortMovies(
     movies: readonly IMovie[],
     sortOrder: MovieSortOrder

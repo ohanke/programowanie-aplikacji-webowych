@@ -1,10 +1,26 @@
 import React from "react";
 
+/**
+ * Properties for the MovieBadge presentation component.
+ */
 interface MovieBadgeProperties {
+  /**
+   * Text label displayed inside the badge.
+   */
   readonly label: string;
+
+  /**
+   * Visual variant altering badge background and text accent color.
+   */
   readonly variant?: "genre" | "rating" | "year" | "age";
 }
 
+/**
+ * Compact pill badge component used across cards and detail pages for genres, ratings, and years.
+ *
+ * @param properties - Component properties.
+ * @returns Rendered badge element.
+ */
 export function MovieBadge({
   label,
   variant = "genre",

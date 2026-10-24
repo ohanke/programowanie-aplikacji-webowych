@@ -6,10 +6,23 @@ import { IMovie } from "../contracts/IMovie";
 import { MovieServiceFactory } from "../services/MovieServiceFactory";
 import { MovieBadge } from "./MovieBadge";
 
+/**
+ * Properties for the MovieCard presentation component.
+ */
 interface MovieCardProperties {
+  /**
+   * The movie domain entity to display.
+   */
   readonly movie: IMovie;
 }
 
+/**
+ * Interactive preview card displaying a movie poster, title, rating, runtime, and genre tags.
+ * Clicking navigates to the detailed movie view.
+ *
+ * @param properties - Component properties.
+ * @returns Rendered movie card link element.
+ */
 export function MovieCard({ movie }: MovieCardProperties) {
   const movieFormatterService = MovieServiceFactory.getMovieFormatterService();
   const formattedDuration = movieFormatterService.formatDuration(
@@ -26,7 +39,7 @@ export function MovieCard({ movie }: MovieCardProperties) {
         <div className="relative aspect-[2/3] w-full overflow-hidden bg-slate-950">
           <Image
             src={movie.posterImageUrl}
-            alt={`Plakat filmu ${movie.title}`}
+            alt={`Poster for ${movie.title}`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -7,10 +7,23 @@ import { MovieServiceFactory } from "../services/MovieServiceFactory";
 import { MovieGrid } from "./MovieGrid";
 import { MovieSearchFilterBar } from "./MovieSearchFilterBar";
 
+/**
+ * Properties for the MovieCatalogClient client-side container component.
+ */
 interface MovieCatalogClientProperties {
+  /**
+   * Complete immutable list of movies supplied by the server page component.
+   */
   readonly initialMovies: readonly IMovie[];
 }
 
+/**
+ * Client-side orchestrator managing search query state, active genre filtering, and sorting order.
+ * Delegates filtering computations to MovieFilterService.
+ *
+ * @param properties - Component properties.
+ * @returns Rendered filter bar and resulting movie grid.
+ */
 export function MovieCatalogClient({
   initialMovies,
 }: MovieCatalogClientProperties) {

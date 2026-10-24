@@ -7,13 +7,37 @@ import {
   MovieSortOrder,
 } from "../contracts/IMovieFilterCriteria";
 
+/**
+ * Properties for the MovieSearchFilterBar interactive component.
+ */
 interface MovieSearchFilterBarProperties {
+  /**
+   * Current active filtering and sorting parameters.
+   */
   readonly criteria: IMovieFilterCriteria;
+
+  /**
+   * List of all unique genre names available for filtering.
+   */
   readonly availableGenres: readonly string[];
+
+  /**
+   * Total number of results matching the current criteria.
+   */
   readonly totalResultsCount: number;
+
+  /**
+   * Callback invoked whenever search query, genre, or sort order changes.
+   */
   readonly onCriteriaChange: (newCriteria: IMovieFilterCriteria) => void;
 }
 
+/**
+ * Interactive filter toolbar providing live text search, genre category pills, and sort order selection.
+ *
+ * @param properties - Component properties.
+ * @returns Rendered search and filter toolbar.
+ */
 export function MovieSearchFilterBar({
   criteria,
   availableGenres,

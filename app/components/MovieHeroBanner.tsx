@@ -6,10 +6,22 @@ import { IMovie } from "../contracts/IMovie";
 import { MovieServiceFactory } from "../services/MovieServiceFactory";
 import { MovieBadge } from "./MovieBadge";
 
+/**
+ * Properties for the MovieHeroBanner presentation component.
+ */
 interface MovieHeroBannerProperties {
+  /**
+   * The highlighted movie to feature on the hero banner.
+   */
   readonly featuredMovie: IMovie;
 }
 
+/**
+ * Large cinematic hero showcase section featuring a panoramic backdrop, title, ratings, synopsis, and action buttons.
+ *
+ * @param properties - Component properties.
+ * @returns Rendered hero banner section.
+ */
 export function MovieHeroBanner({
   featuredMovie,
 }: MovieHeroBannerProperties) {
@@ -27,7 +39,7 @@ export function MovieHeroBanner({
       <div className="absolute inset-0">
         <Image
           src={featuredMovie.backdropImageUrl}
-          alt={`Tło filmu ${featuredMovie.title}`}
+          alt={`Backdrop for ${featuredMovie.title}`}
           fill
           priority
           sizes="100vw"
