@@ -1,52 +1,14 @@
-import { photos } from "@/app/data/photos"
-import Link from "next/link"
+import { redirect } from "next/navigation";
 
-
-
-type Props = {
-    params: Promise<{
-        id: string
-    }>
+interface GalleryDetailsProperties {
+  readonly params: Promise<{
+    readonly id: string;
+  }>;
 }
 
-export default async function PhotoDetails({ params }: Props) {
-
-    const { id } = await params
-
-    const photo = photos.find(
-        (photo) => photo.id === Number(id)
-    )
-
-    if (!photo) {
-        return (
-            <main>
-                <h2>Image doesn't exist</h2>
-                <Link
-                    href="/gallery"
-                >
-                    Back to gallery
-                </Link>
-            </main>
-        )
-    }
-
-    return (
-        <main className="mx-auto max-w-5x1 px-6 py-10">
-
-            <article>
-                <img
-                    src={photo.image}
-                    alt={photo.title}
-                />
-            </article>
-
-            <Link
-                href="/gallery"
-            >
-                Back to gallery
-            </Link>
-
-        </main>
-    )
-
+export default async function GalleryDetailsRedirect({
+  params,
+}: GalleryDetailsProperties) {
+  const { id } = await params;
+  redirect(`/movies/${id}`);
 }
